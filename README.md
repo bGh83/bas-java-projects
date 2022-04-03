@@ -1,8 +1,5 @@
-# MercuryTours
-sample selenium project to practice and improve test automation
-(Inspired from ToolsQA, Stackoverflow, Blazemeter sites etc.)
+# Some Java Projects
 
-Capabilites added so far...
 - Basic Selenium Cucumber BDD Framework to automate tests 
 - Using Maven to manage project dependencies and to run the tests
 - Integration of Extent & Cluecumber Reports
