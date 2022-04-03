@@ -1,0 +1,344 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.github.basilbc2000.bas-java-projects</groupId>
+	<artifactId>automation-project-basic</artifactId>
+	<packaging>jar</packaging>
+	<version>1.0-SNAPSHOT</version>
+	<name>TestAutomationProject</name>
+	<url>http://maven.apache.org</url>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<maven.failsafe.plugin.version>2.22.1</maven.failsafe.plugin.version>
+		<maven.build.helper.plugin.version>3.0.0</maven.build.helper.plugin.version>
+		<maven.compiler.plugin.version>3.7.0</maven.compiler.plugin.version>
+
+		<generated.runner.directory>${project.build.directory}\parallel\runners</generated.runner.directory>
+		<generated.feature.directory>${project.build.directory}\parallel\features</generated.feature.directory>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.12</version>
+			<scope>test</scope>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-java</artifactId>
+			<version>3.141.59</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-java -->
+		<dependency>
+			<groupId>io.cucumber</groupId>
+			<artifactId>cucumber-java</artifactId>
+			<version>4.2.0</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-jvm-deps -->
+		<dependency>
+			<groupId>io.cucumber</groupId>
+			<artifactId>cucumber-jvm-deps</artifactId>
+			<version>1.0.6</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-junit -->
+		<dependency>
+			<groupId>io.cucumber</groupId>
+			<artifactId>cucumber-junit</artifactId>
+			<version>4.2.0</version>
+			<scope>test</scope>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-picocontainer -->
+		<dependency>
+			<groupId>io.cucumber</groupId>
+			<artifactId>cucumber-picocontainer</artifactId>
+			<version>4.2.0</version>
+			<scope>test</scope>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
+		<dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+			<version>2.8.5</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core -->
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-core</artifactId>
+			<version>2.11.1</version>
+		</dependency>
+
+
+		<!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-api -->
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-api</artifactId>
+			<version>2.11.1</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/com.trivago.rta/cluecumber-report-plugin -->
+		<dependency>
+			<groupId>com.trivago.rta</groupId>
+			<artifactId>cluecumber-report-plugin</artifactId>
+			<version>1.6.4</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/net.masterthought/cucumber-reporting -->
+		<dependency>
+			<groupId>net.masterthought</groupId>
+			<artifactId>cucumber-reporting</artifactId>
+			<version>4.4.0</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/commons-codec/commons-codec -->
+		<dependency>
+			<groupId>commons-codec</groupId>
+			<artifactId>commons-codec</artifactId>
+			<version>1.10</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.xerial/sqlite-jdbc -->
+		<dependency>
+			<groupId>org.xerial</groupId>
+			<artifactId>sqlite-jdbc</artifactId>
+			<version>3.27.2.1</version>
+		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/com.googlecode.json-simple/json-simple -->
+		<dependency>
+		    <groupId>com.googlecode.json-simple</groupId>
+		    <artifactId>json-simple</artifactId>
+		    <version>1.1</version>
+		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/org.jsoup/jsoup -->
+		<dependency>
+		    <groupId>org.jsoup</groupId>
+		    <artifactId>jsoup</artifactId>
+		    <version>1.12.1</version>
+		</dependency>
+		
+		
+
+		<!-- https://mvnrepository.com/artifact/com.google.protobuf/protobuf-java -->
+	<!--	<dependency>
+			<groupId>com.google.protobuf</groupId>
+			<artifactId>protobuf-java</artifactId>
+			<version>3.7.0</version>
+		</dependency> -->
+
+
+		<!-- https://mvnrepository.com/artifact/org.xerial.thirdparty/nestedvm -->
+	<!--	<dependency>
+			<groupId>org.xerial.thirdparty</groupId>
+			<artifactId>nestedvm</artifactId>
+			<version>1.0</version>
+		</dependency> -->
+
+		<!-- https://mvnrepository.com/artifact/org.codehaus.groovy/groovy-all -->
+	<!-- 	<dependency>
+			<groupId>org.codehaus.groovy</groupId>
+			<artifactId>groovy-all</artifactId>
+			<version>3.0.0-alpha-4</version>
+			<type>pom</type>
+		</dependency> -->
+
+	</dependencies>
+
+	<profiles>
+		<profile>
+			<id>para</id>
+			<activation>
+				<property>
+					<name>run</name>
+					<value>para</value>
+				</property>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>com.trivago.rta</groupId>
+						<artifactId>cucable-plugin</artifactId>
+						<version>1.5.1</version>
+						<executions>
+							<execution>
+								<id>generate-test-resources</id>
+								<phase>generate-test-resources</phase>
+								<goals>
+									<goal>parallel</goal>
+								</goals>
+							</execution>
+						</executions>
+						<configuration>
+							<sourceRunnerTemplateFile>src/test/resources/CucableRunner.template</sourceRunnerTemplateFile>
+							
+							<sourceFeatures>
+								<!-- src/test/resources/application/features/ -->
+								${features}							
+							</sourceFeatures>														
+							
+							<generatedFeatureDirectory>${generated.feature.directory}</generatedFeatureDirectory>
+							<generatedRunnerDirectory>${generated.runner.directory}</generatedRunnerDirectory>
+						</configuration>
+					</plugin>
+					<plugin>
+						<groupId>org.codehaus.mojo</groupId>
+						<artifactId>build-helper-maven-plugin</artifactId>
+						<version>${maven.build.helper.plugin.version}</version>
+						<executions>
+							<execution>
+								<id>add-test-source</id>
+								<phase>generate-test-sources</phase>
+								<goals>
+									<goal>add-test-source</goal>
+								</goals>
+								<configuration>
+									<sources>
+										<source>${generated.runner.directory}</source>
+									</sources>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-failsafe-plugin</artifactId>
+						<version>${maven.failsafe.plugin.version}</version>
+						<executions>
+							<execution>
+								<id>Run parallel tests</id>
+								<phase>integration-test</phase>
+								<goals>
+									<goal>integration-test</goal>
+								</goals>
+							</execution>
+						</executions>
+						<configuration>
+							<forkCount>5</forkCount>
+							<testFailureIgnore>true</testFailureIgnore>
+						</configuration>
+					</plugin>
+					<!-- <plugin> -->
+					<!-- <groupId>com.trivago.rta</groupId> -->
+					<!-- <artifactId>cluecumber-report-plugin</artifactId> -->
+					<!-- <version>1.5.0</version> -->
+					<!-- <executions> -->
+					<!-- <execution> -->
+					<!-- <id>report</id> -->
+					<!-- <phase>post-integration-test</phase> -->
+					<!-- <goals> -->
+					<!-- <goal>reporting</goal> -->
+					<!-- </goals> -->
+					<!-- </execution> -->
+					<!-- </executions> -->
+					<!-- <configuration> -->
+					<!-- <sourceJsonReportDirectory>${project.build.directory}\cucumber-report</sourceJsonReportDirectory> -->
+					<!-- <generatedHtmlReportDirectory>${project.build.directory}\test-report</generatedHtmlReportDirectory> -->
+					<!-- </configuration> -->
+					<!-- </plugin> -->
+
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-surefire-plugin</artifactId>
+						<version>2.19</version>
+						<configuration>
+							<excludes>
+								<excludesFile>**/RunnerTest.java</excludesFile>
+							</excludes>
+						</configuration>
+					</plugin>
+
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-compiler-plugin</artifactId>
+						<version>${maven.compiler.plugin.version}</version>
+						<configuration>
+							<source>1.8</source>
+							<target>1.8</target>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+
+		<profile>
+			<id>report</id>
+			<activation>
+				<property>
+					<name>run</name>
+					<value>report</value>
+				</property>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>com.trivago.rta</groupId>
+						<artifactId>cluecumber-report-plugin</artifactId>
+						<version>1.8.0</version>
+						<executions>
+							<execution>
+								<id>report</id>
+								<phase>post-integration-test</phase>
+								<goals>
+									<goal>reporting</goal>
+								</goals>
+							</execution>
+						</executions>
+						<configuration>
+							<sourceJsonReportDirectory>${project.build.directory}\cucumber-report</sourceJsonReportDirectory>
+							<generatedHtmlReportDirectory>${project.build.directory}\test-report</generatedHtmlReportDirectory>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+
+	</profiles>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${maven.compiler.plugin.version}</version>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+				</configuration>
+			</plugin>
+
+			<!-- <plugin> -->
+			<!-- <groupId>com.trivago.rta</groupId> -->
+			<!-- <artifactId>cluecumber-report-plugin</artifactId> -->
+			<!-- <version>1.5.0</version> -->
+			<!-- <executions> -->
+			<!-- <execution> -->
+			<!-- <id>report</id> -->
+			<!-- <phase>post-integration-test</phase> -->
+			<!-- <goals> -->
+			<!-- <goal>reporting</goal> -->
+			<!-- </goals> -->
+			<!-- </execution> -->
+			<!-- </executions> -->
+			<!-- <configuration> -->
+			<!-- <sourceJsonReportDirectory>${project.build.directory}\cucumber-report</sourceJsonReportDirectory> -->
+			<!-- <generatedHtmlReportDirectory>${project.build.directory}\test-report</generatedHtmlReportDirectory> -->
+			<!-- </configuration> -->
+			<!-- </plugin> -->
+
+		</plugins>
+	</build>
+
+</project>

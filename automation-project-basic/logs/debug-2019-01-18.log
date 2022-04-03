@@ -1,0 +1,15 @@
+180119(11:09) [INFO ] managers.WebDrivers.<init>(43) {Key Configs:runLocation:REMOTE,driverType:CHROME,isHeadless:null,isMaximize:true}
+180119(11:09) [DEBUG] managers.WebDrivers.createDriver(55) {}
+180119(11:09) [INFO ] managers.WebDrivers.createDriver(65) {Hub URL: localhost:4444}
+180119(11:09) [INFO ] managers.WebDrivers.<init>(43) {Key Configs:runLocation:REMOTE,driverType:CHROME,isHeadless:null,isMaximize:true}
+180119(11:09) [DEBUG] managers.WebDrivers.createDriver(55) {}
+180119(11:09) [INFO ] managers.WebDrivers.createDriver(65) {Hub URL: localhost:4444}
+180119(11:09) [INFO ] managers.WebDrivers.<init>(43) {Key Configs:runLocation:REMOTE,driverType:CHROME,isHeadless:null,isMaximize:true}
+180119(11:09) [DEBUG] managers.WebDrivers.createDriver(55) {}
+180119(11:09) [INFO ] managers.WebDrivers.createDriver(65) {Hub URL: localhost:4444}
+180119(11:09) [DEBUG] mercurypo.HomePage.is_HomePage(61) {debugging}
+180119(11:09) [INFO ] mercurypo.HomePage.is_HomePage(63) {info}
+180119(11:09) [ERROR] mercurypo.HomePage.is_HomePage(64) {--error00--}
+180119(11:09) [FATAL] mercurypo.HomePage.is_HomePage(65) {--fatal00--}
+180119(11:09) [INFO ] managers.WebDrivers.<init>(43) {Key Configs:runLocation:REMOTE,driverType:CHROME,isHeadless:null,isMaximize:true}
+180119(11:09) [DEBUG] managers.WebDrivers.createDriver(55) {}

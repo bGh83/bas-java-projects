@@ -1,0 +1,6 @@
+180119(11:09) [INFO ] managers.WebDrivers.createDriver(65) {Hub URL: localhost:4444}
+180119(11:10) [DEBUG] mercurypo.HomePage.open_HomePage(51) {}
+180119(11:10) [DEBUG] mercurypo.HomePage.is_HomePage(61) {debugging}
+180119(11:10) [INFO ] mercurypo.HomePage.is_HomePage(63) {info}
+180119(11:10) [ERROR] mercurypo.HomePage.is_HomePage(64) {--error00--}
+180119(11:10) [FATAL] mercurypo.HomePage.is_HomePage(65) {--fatal00--}

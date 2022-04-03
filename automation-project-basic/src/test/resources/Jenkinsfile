@@ -1,0 +1,82 @@
+pipeline {
+	agent any
+	stages {
+		stage ('Checkout Code') {
+			steps {
+				echo '****** CHECKOUT CODE & PERFORM MVN CLEAN ******' 	
+				script {					  					  					
+					def exists = fileExists 'TestAutomationProject'
+					if (!exists){
+						new File('TestAutomationProject').mkdir()
+					}					
+					dir ('TestAutomationProject') {						
+						git url: 'http://localhost:3000/basil/MercuryTours.git'								
+						bat 'mvn -f TestAutomationProject\\pom.xml clean'
+						def stdout = bat (														
+							script: 'sqlite3 TestAutomationProject\\src\\test\\resources\\RunDataDB.db "SELECT DISTINCT PATH FROM RUN_DATA WHERE STATUS = \'Passed\' AND strftime(\'%%d%%m%%Y\',TIMESTAMP) = strftime(\'%%d%%m%%Y\',\'now\');" ".exit"',							
+							returnStdout: true
+						).trim()						
+						features = stdout.readLines().drop(1).join(" ")						
+						echo "${features}"						
+					}
+				}
+			}
+		}
+
+		stage ('Sanity Tests') {
+			parallel {
+				stage('Firefox') {
+					steps {
+						echo '****** RUN IN FIREFOX ******'
+						script {
+							dir("TestAutomationProject") {
+								try {
+									//bat 'mvn -f TestAutomationProject\\pom.xml test -Dcucumber.options="--tags @smoke01 --plugin json:target/cucumber-firefox.json"'
+									//bat 'mvn -f TestAutomationProject\\pom.xml test verify -Drun=para -Dfork=2 -Dcucumber.options="--tags @smoke01"'									
+									bat "mvn -f TestAutomationProject\\pom.xml test verify -Drun=para -Dfeatures=$features"
+									//cucumber fileIncludePattern: '**/cucumber-*.json', parallelTesting: true
+								} catch (err) {} 
+							}
+						}
+					}
+				}
+
+				stage('Chrome') {
+					steps {
+						echo '****** RUN IN CHROME ******'
+						script {
+							dir("TestAutomationProject") {
+								try {								
+									//bat 'mvn -f TestAutomationProject\\pom.xml test -Dcucumber.options="--tags @smoke02 --plugin json:target/cucumber-chrome.json"'
+									//bat 'mvn -f TestAutomationProject\\pom.xml test verify -Drun=para -Dfork=2 -Dcucumber.options="--tags @smoke02"'
+									bat "mvn -f TestAutomationProject\\pom.xml test verify -Drun=para -Dfeatures=$features"
+									//cucumber fileIncludePattern: '**/cucumber-*.json', parallelTesting: true
+								} catch (err) {} 
+							}
+						}
+					}
+				}
+			}
+		}
+		
+		stage('Report') {
+		
+			steps {
+				echo '****** GENERATE REPORT ******'
+			}
+		
+			post {
+				success {					
+					dir("TestAutomationProject") {
+						script {
+							//cucumber fileIncludePattern: '**/cucumber-*.json', parallelTesting: true
+							cucumber fileIncludePattern: '**/*scenario*.json', parallelTesting: true
+							//bat 'mvn cluecumber-report:reporting'
+						}
+					}
+				}
+			}    
+		}
+				
+	}
+}

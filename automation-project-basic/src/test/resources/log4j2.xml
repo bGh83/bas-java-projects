@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Configuration status="WARN">
+	<Properties>
+		<Property name="basePath">./logs</Property>
+	</Properties>
+	<Appenders>
+		<Console name="Console" target="SYSTEM_OUT">
+			<PatternLayout pattern="%n%d{ddMMyy(HH:mm)} [%-5level] %logger{36}.%M(%L) {%msg}%n"/>
+		</Console>
+		<RollingFile name="File" fileName="${basePath}/debug.log"
+			filePattern="${basePath}/debug-%d{yyyy-MM-dd}.log">
+			<PatternLayout pattern="%d{ddMMyy(HH:mm)} [%-5level] %logger{36}.%M(%L) {%msg}%n"/>
+			<!-- create another file when size exceeds 500kb -->
+			<SizeBasedTriggeringPolicy size="500" />
+		</RollingFile>
+	</Appenders>
+
+	<Loggers>	
+		<!-- code level - package.class -->
+		<!-- <Logger name="cdmvpo.inbound.ManualInbound" level="error" additivity="false"> -->
+		<!-- <AppenderRef ref="Console"/> </Logger> -->
+		
+		<!-- Root level="error" OR "trace" -->
+		<!--  <AppenderRef ref="Console" OR "File" /> -->
+					
+		<Root level="debug">
+			<AppenderRef ref="Console" />
+			<!-- <AppenderRef ref="File" /> -->
+		</Root>
+		
+	</Loggers>
+
+</Configuration>

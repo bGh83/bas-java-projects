@@ -1,8 +1,0 @@
-22:32:28.392 [main] DEBUG pageObjects.HomePage - debugging
-22:32:28.397 [main] INFO  pageObjects.HomePage - info
-22:32:28.398 [main] ERROR pageObjects.HomePage - --error00--
-22:32:28.398 [main] FATAL pageObjects.HomePage - --fatal00--
-09:02:43.429 [main] DEBUG pageObjects.HomePage - debugging
-09:02:43.435 [main] INFO  pageObjects.HomePage - info
-09:02:43.436 [main] ERROR pageObjects.HomePage - --error00--
-09:02:43.436 [main] FATAL pageObjects.HomePage - --fatal00--

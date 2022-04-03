@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <user id="001">
+        <firstName>BASIL</firstName>
+        <lastName>BABU</lastName>
+    </user>
+    <user id="002">
+        <firstName>EVAN</firstName>
+        <lastName>BASIL</lastName>
+    </user>
+</config>
